@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BallDodgeTemplate
 {
-    public partial class Form1 : Form
+    public partial class GameOverall : Form
     {
-        public Form1()
+        public GameOverall()
         {
             InitializeComponent();
 
