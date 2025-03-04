@@ -15,6 +15,8 @@ namespace BallDodgeTemplate
         List<Ball> balls = new List<Ball>();
         Player Hero;
 
+        public static int lives = 3;
+        public static int points = 0;
         public static int screenWidth;
         public static int screenHeight;
 
@@ -58,34 +60,79 @@ namespace BallDodgeTemplate
         {
             switch (e.KeyCode)
             {
-                case Keys.Left:
-                    leftArrowDown = false;
+                case Keys.A:
+                    leftArrowDown = true;
                     break;
-                case Keys.Right:
+                case Keys.D:
                     rightArrowDown = true;
                     break;
-                case Keys.Up:
-                    upArrowDown = false;
+                case Keys.W:
+                    upArrowDown = true;
                     break;
-                case Keys.Down:
+                case Keys.S:
                     downArrowDown = true;
                     break;
             }
-                    
         }
 
         private void GameScreen_KeyUp(object sender, KeyEventArgs e)
         {
-
+            switch (e.KeyCode)
+            {
+                case Keys.A:
+                    leftArrowDown = false;
+                    break;
+                case Keys.D:
+                    rightArrowDown = false;
+                    break;
+                case Keys.W:
+                    upArrowDown = false;
+                    break;
+                case Keys.S:
+                    downArrowDown = false;
+                    break;
+            }
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            chaseball.Move();
+            if (rightArrowDown == true)
+            {
+                Hero.Move("right");
+            }
+            else if (leftArrowDown == true)
+            {
+                Hero.Move("left");
+            }
+            else if (upArrowDown == true)
+            {
+                Hero.Move("up");
+            }
+            else if (downArrowDown == true)
+            {
+                Hero.Move("down");
+            }
 
             foreach (Ball b in balls)
             {
                 b.Move();
+
+                if (Hero.Collision(b))
+                {
+                    lives--;
+                }
+            }
+
+            chaseball.Move();
+
+            if (Hero.Collision(chaseball))
+            {
+                points++;
+            }
+
+            if (lives == 0)
+            {
+                gameTimer.Stop();
             }
 
             Refresh();
@@ -93,6 +140,9 @@ namespace BallDodgeTemplate
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            livesLabel.Text = $"Lives: {lives}";
+            pointsLabel.Text = $"Points: {points}";
+
             e.Graphics.FillEllipse(redBrush, chaseball.x, chaseball.y, chaseball.size, chaseball.size);
 
             e.Graphics.FillRectangle(redBrush, Hero.x, Hero.y, Hero.width, Hero.height);
