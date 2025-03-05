@@ -15,8 +15,9 @@ namespace BallDodgeTemplate
         List<Ball> balls = new List<Ball>();
         Player Hero;
 
-        public static int lives = 3;
-        public static int points = 0;
+        public static int diffculty;
+        public static int lives;
+        public static int points;
         public static int screenWidth;
         public static int screenHeight;
 
@@ -123,8 +124,6 @@ namespace BallDodgeTemplate
                 }
             }
 
-            chaseball.Move();
-
             if (Hero.Collision(chaseball))
             {
                 points++;
@@ -132,8 +131,11 @@ namespace BallDodgeTemplate
 
             if (lives == 0)
             {
+                GameOverall.ChangeScreen(this, new GameOverScreen());
                 gameTimer.Stop();
             }
+
+            chaseball.Move();
 
             Refresh();
         }

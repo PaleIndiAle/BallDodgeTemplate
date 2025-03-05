@@ -43,18 +43,20 @@
             // livesLabel
             // 
             this.livesLabel.AutoSize = true;
-            this.livesLabel.Location = new System.Drawing.Point(29, 0);
+            this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesLabel.Location = new System.Drawing.Point(36, 0);
             this.livesLabel.Name = "livesLabel";
-            this.livesLabel.Size = new System.Drawing.Size(35, 13);
+            this.livesLabel.Size = new System.Drawing.Size(51, 20);
             this.livesLabel.TabIndex = 0;
             this.livesLabel.Text = "label1";
             // 
             // pointsLabel
             // 
             this.pointsLabel.AutoSize = true;
-            this.pointsLabel.Location = new System.Drawing.Point(532, 0);
+            this.pointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pointsLabel.Location = new System.Drawing.Point(506, 0);
             this.pointsLabel.Name = "pointsLabel";
-            this.pointsLabel.Size = new System.Drawing.Size(35, 13);
+            this.pointsLabel.Size = new System.Drawing.Size(51, 20);
             this.pointsLabel.TabIndex = 1;
             this.pointsLabel.Text = "label2";
             // 
